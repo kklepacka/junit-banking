@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -10,22 +9,16 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>nested</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>http://www.example.com</url> <!-- Update this URL -->
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+    <!-- JUnit Jupiter API for writing tests -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -42,8 +35,7 @@
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to
-      parent pom) -->
+    <pluginManagement>
       <plugins>
         <!-- clean lifecycle, see
         https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -88,10 +80,10 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.1</version>
           <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
+            <source>1.8</source>
+            <target>1.8</target>
           </configuration>
-      </plugin>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
