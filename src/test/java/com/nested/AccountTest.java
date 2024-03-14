@@ -1,4 +1,5 @@
 package com.nested;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
@@ -13,7 +14,6 @@ class AccountTest {
         account = new Account("John Doe");
         System.out.println("@BeforeEach: Global setup for all tests");
     }
-
 
     @Nested
     class Depositing {
@@ -35,7 +35,8 @@ class AccountTest {
         @Test
         void depositingNegativeAmountFails() {
             System.out.println("Running test: depositingNegativeAmountFails");
-            assertThrows(IllegalArgumentException.class, () -> account.deposit(-100), "Depositing negative amount should fail");
+            assertThrows(IllegalArgumentException.class, () -> account.deposit(-100),
+                    "Depositing negative amount should fail");
         }
     }
 
@@ -56,11 +57,26 @@ class AccountTest {
             assertEquals(initialBalance - 100, account.getBalance(), "Withdrawing should decrease balance");
         }
 
-        @Test
-        void withdrawingMoreThanBalanceFails() {
-            System.out.println("Running test: withdrawingMoreThanBalanceFails");
-            int balance = account.getBalance();
-            assertThrows(InsufficientFundsException.class, () -> account.withdraw(balance + 100), "Withdrawing more than balance should fail");
+        @Nested
+        class LargeWithdrawTests {
+            @BeforeEach
+            void setUp() {
+                System.out.println("Setup for LargeWithdrawTests (No additional setup required)");
+            }
+
+            @Test
+            void largeWithdrawFailsWithoutSufficientBalance() {
+                assertThrows(InsufficientFundsException.class, () -> account.withdraw(2000),
+                        "Should throw InsufficientFundsException for large withdrawal without sufficient balance");
+            }
+
+            @Test
+            void withdrawingMoreThanBalanceFails() {
+                System.out.println("Running test: withdrawingMoreThanBalanceFails");
+                int balance = account.getBalance();
+                assertThrows(InsufficientFundsException.class, () -> account.withdraw(balance + 100),
+                        "Withdrawing more than balance should fail");
+            }
         }
     }
 }
