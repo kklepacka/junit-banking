@@ -66,7 +66,7 @@ class AccountTest {
 
             @Test
             void largeWithdrawFailsWithoutSufficientBalance() {
-                assertThrows(InsufficientFundsException.class, () -> account.withdraw(2000),
+                assertThrows(InsufficientFundsException.class, () -> account.withdraw(1000),
                         "Should throw InsufficientFundsException for large withdrawal without sufficient balance");
             }
 
